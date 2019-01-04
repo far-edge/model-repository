@@ -34,7 +34,9 @@ const uri = `mongodb://${auth}${host}:${port}/${name}`;
 logger.info(`System connects to the database @ ${uriwa}.`);
 mongoose.connect(uri, {
   keepAlive: 1,
-  poolSize: process.env.MONGODB_POOL_SIZE
+  poolSize: process.env.MONGODB_POOL_SIZE,
+  useCreateIndex: true,
+  useNewUrlParser: true
 }).then(() => {
   logger.info(`System connected to the database @ ${uriwa}.`);
 }).catch((error) => {
