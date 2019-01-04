@@ -1,6 +1,5 @@
 FROM node:10.1.0
 
-RUN mkdir -p /faredge/model-repository
 WORKDIR /faredge/model-repository
 
 COPY package.json /faredge/model-repository

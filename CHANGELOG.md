@@ -26,4 +26,3 @@
 * Delete an analytics processor definition.
 * Get an analytics processor definition.
 * Discover analytics processor definitions.
-* Dockerise.
