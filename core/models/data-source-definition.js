@@ -1,18 +1,6 @@
 const mongoose = require('mongoose');
 const uuidv4 = require('uuid/v4');
 
-// Data kinds.
-const DataKindsSchema = new mongoose.Schema({
-
-  // The data kind.
-  dataKindReferenceID: [{
-    type: String,
-    ref: 'DataKind',
-    required: true
-  }]
-
-});
-
 // Data source definitions.
 const DataSourceDefinitionSchema = new mongoose.Schema({
 
@@ -42,9 +30,10 @@ const DataSourceDefinitionSchema = new mongoose.Schema({
     required: true
   },
 
-  // The data kinds of the data source definition.
-  dataKindReferenceIDs: {
-    type: DataKindsSchema,
+  // The data kind of the data source definition.
+  dataKindReferenceID: {
+    type: String,
+    ref: 'DataKind',
     required: true
   }
 

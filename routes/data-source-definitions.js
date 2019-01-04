@@ -16,41 +16,33 @@ const router = express.Router({ mergeParams: true });
  *
  * @apiParam {String} name The name of the data source definition.
  * @apiParam {String} [description] The description of the data source definition.
- * @apiParam {String} [dataInterfaceReferenceID] The data interface of the data source definition.
- * @apiParam {String[]} [dataKindReferenceIDs.dataKindReferenceID] The data kinds of the data source definition.
+ * @apiParam {String} dataInterfaceReferenceID The data interface of the data source definition.
+ * @apiParam {String} dataKindReferenceID The data kind of the data source definition.
  * @apiParamExample {json} Request
  *   {
  *     "name": "Temperature in JSON over MQTT",
  *     "dataInterfaceReferenceID": "6b8b37d0-3f74-4d80-9669-7aafb545f9f8",
- *     "dataKindReferenceIDs": {
- *       "dataKindReferenceID": [
- *         "445a4277-0623-4318-a494-8308bd998f3f"
- *       ]
- *     }
+ *     "dataKindReferenceID": "445a4277-0623-4318-a494-8308bd998f3f"
  *   }
  *
  * @apiSuccess {String} id The ID of the data source definition.
  * @apiSuccess {String} name The name of the data source definition.
  * @apiSuccess {String} [description] The description of the data source definition.
  * @apiSuccess {String} dataInterfaceReferenceID The data interface of the data source definition.
- * @apiSuccess {String[]} dataKindReferenceIDs.dataKindReferenceID The data kinds of the data source definition.
+ * @apiSuccess {String} dataKindReferenceID The data kind of the data source definition.
  * @apiSuccessExample Success
  *   HTTP/1.1 201 Created
  *   {
  *     "id": "a89524a9-e8f7-455c-857b-0380ff308412",
  *     "name": "Temperature in JSON over MQTT",
  *     "dataInterfaceReferenceID": "6b8b37d0-3f74-4d80-9669-7aafb545f9f8",
- *     "dataKindReferenceIDs": {
- *       "dataKindReferenceID": [
- *         "445a4277-0623-4318-a494-8308bd998f3f"
- *       ]
- *     }
+ *     "dataKindReferenceID": "445a4277-0623-4318-a494-8308bd998f3f"
  *   }
  *
  * @apiError (Error 400) DATA_INTERFACE_NOT_FOUND The data interface was not found.
- * @apiError (Error 400) DATA_KIND_NOT_FOUND One of the data kinds was not found.
+ * @apiError (Error 400) DATA_KIND_NOT_FOUND The data kind was not found.
  * @apiError (Error 400) MISSING_DATA_INTERFACE_REFERENCE_ID The data interface is missing.
- * @apiError (Error 400) MISSING_DATA_KIND_REFERENCE_IDS The data kinds are missing.
+ * @apiError (Error 400) MISSING_DATA_KIND_REFERENCE_ID The data kind is missing.
  * @apiError (Error 400) MISSING_NAME The name is missing.
  * @apiError (Error 400) NAME_TAKEN The name is taken.
  * @apiError (Error 500) FAILED The request failed.
@@ -62,7 +54,7 @@ const router = express.Router({ mergeParams: true });
  *
  * @apiExample {curl} Example
  *   curl -H 'Content-Type: application/json' \
- *        -d '{ "name": "Temperature in JSON over MQTT", "dataInterfaceReferenceID": "6b8b37d0-3f74-4d80-9669-7aafb545f9f8", "dataKindReferenceIDs": { "dataKindReferenceID": [ "445a4277-0623-4318-a494-8308bd998f3f" ] } }' \
+ *        -d '{ "name": "Temperature in JSON over MQTT", "dataInterfaceReferenceID": "6b8b37d0-3f74-4d80-9669-7aafb545f9f8", "dataKindReferenceID": "445a4277-0623-4318-a494-8308bd998f3f" }' \
  *        -X POST http://localhost:8888/api/data-source-definitions
  */
 router.route('/').post(validate(blueprint.createDataSourceDefinition),
@@ -78,40 +70,32 @@ router.route('/').post(validate(blueprint.createDataSourceDefinition),
  * @apiParam {String} name The name of the data source definition.
  * @apiParam {String} [description] The description of the data source definition.
  * @apiParam {String} dataInterfaceReferenceID The data interface of the data source definition.
- * @apiParam {String[]} dataKindReferenceIDs.dataKindReferenceID The data kinds of the data source definition.
+ * @apiParam {String} dataKindReferenceID The data kind of the data source definition.
  * @apiParamExample {json} Request
  *   {
  *     "name": "Temperature in JSON over MQTT",
  *     "dataInterfaceReferenceID": "6b8b37d0-3f74-4d80-9669-7aafb545f9f8",
- *     "dataKindReferenceIDs": {
- *       "dataKindReferenceID": [
- *         "445a4277-0623-4318-a494-8308bd998f3f"
- *       ]
- *     }
+ *     "dataKindReferenceID": "445a4277-0623-4318-a494-8308bd998f3f"
  *   }
  *
  * @apiSuccess {String} id The ID of the data source definition.
  * @apiSuccess {String} name The name of the data source definition.
  * @apiSuccess {String} [description] The description of the data source definition.
  * @apiSuccess {String} dataInterfaceReferenceID The data interface of the data source definition.
- * @apiSuccess {String[]} dataKindReferenceIDs.dataKindReferenceID The data kinds of the data source definition.
+ * @apiSuccess {String} dataKindReferenceID The data kind of the data source definition.
  * @apiSuccessExample Success
  *   HTTP/1.1 200 OK
  *   {
  *     "id": "a89524a9-e8f7-455c-857b-0380ff308412",
  *     "name": "Temperature in JSON over MQTT",
  *     "dataInterfaceReferenceID": "6b8b37d0-3f74-4d80-9669-7aafb545f9f8",
- *     "dataKindReferenceIDs": {
- *       "dataKindReferenceID": [
- *         "445a4277-0623-4318-a494-8308bd998f3f"
- *       ]
- *     }
+ *     "dataKindReferenceID": "445a4277-0623-4318-a494-8308bd998f3f"
  *   }
  *
  * @apiError (Error 400) DATA_INTERFACE_NOT_FOUND The data interface was not found.
- * @apiError (Error 400) DATA_KIND_NOT_FOUND One of the data kinds was not found.
+ * @apiError (Error 400) DATA_KIND_NOT_FOUND The data kind was not found.
  * @apiError (Error 400) MISSING_DATA_INTERFACE_REFERENCE_ID The data interface is missing.
- * @apiError (Error 400) MISSING_DATA_KIND_REFERENCE_IDS The data kinds are missing.
+ * @apiError (Error 400) MISSING_DATA_KIND_REFERENCE_ID The data kind is missing.
  * @apiError (Error 400) MISSING_NAME The name is missing.
  * @apiError (Error 400) NAME_TAKEN The name is taken.
  * @apiError (Error 500) FAILED The request failed.
@@ -123,7 +107,7 @@ router.route('/').post(validate(blueprint.createDataSourceDefinition),
  *
  * @apiExample {curl} Example
  *   curl -H 'Content-Type: application/json' \
- *        -d '{ "name": "Temperature in JSON over MQTT", "dataInterfaceReferenceID": "6b8b37d0-3f74-4d80-9669-7aafb545f9f8", "dataKindReferenceIDs": { "dataKindReferenceID": [ "445a4277-0623-4318-a494-8308bd998f3f" ] } }' \
+ *        -d '{ "name": "Temperature in JSON over MQTT", "dataInterfaceReferenceID": "6b8b37d0-3f74-4d80-9669-7aafb545f9f8", "dataKindReferenceID": "445a4277-0623-4318-a494-8308bd998f3f" }' \
  *        -X POST http://localhost:8888/api/data-source-definitions/a89524a9-e8f7-455c-857b-0380ff308412
  */
 router.route('/:id').put(validate(blueprint.updateDataSourceDefinition),
@@ -166,18 +150,14 @@ router.route('/:id').delete(validate(blueprint.deleteDataSourceDefinition),
  * @apiSuccess {String} name The name of the data source definition.
  * @apiSuccess {String} [description] The description of the data source definition.
  * @apiSuccess {String} dataInterfaceReferenceID The data interface of the data source definition.
- * @apiSuccess {String[]} dataKindReferenceIDs.dataKindReferenceID The data kinds of the data source definition.
+ * @apiSuccess {String} dataKindReferenceID The data kind of the data source definition.
  * @apiSuccessExample Success
  *   HTTP/1.1 200 OK
  *   {
  *     "id": "a89524a9-e8f7-455c-857b-0380ff308412",
  *     "name": "Temperature in JSON over MQTT",
  *     "dataInterfaceReferenceID": "6b8b37d0-3f74-4d80-9669-7aafb545f9f8",
- *     "dataKindReferenceIDs": {
- *       "dataKindReferenceID": [
- *         "445a4277-0623-4318-a494-8308bd998f3f"
- *       ]
- *     }
+ *     "dataKindReferenceID": "445a4277-0623-4318-a494-8308bd998f3f"
  *   }
  *
  * @apiError (Error 404) DATA_SOURCE_DEFINITION_NOT_FOUND The data source definition was not found.
@@ -214,7 +194,7 @@ router.route('/:id').get(validate(blueprint.getDataSourceDefinition),
  * @apiSuccess {String} dataSourceDefinitions.name The name of the data source definition.
  * @apiSuccess {String} [dataSourceDefinitions.description] The description of the data source definition.
  * @apiSuccess {String} dataSourceDefinitions.dataInterfaceReferenceID The data interface of the data source definition.
- * @apiSuccess {String[]} dataSourceDefinitions.dataKindReferenceIDs.dataKindReferenceID The data kinds of the data source definition.
+ * @apiSuccess {String} dataSourceDefinitions.dataKindReferenceID The data kind of the data source definition.
  * @apiSuccessExample Success
  *   HTTP/1.1 200 OK
  *   {
@@ -223,11 +203,7 @@ router.route('/:id').get(validate(blueprint.getDataSourceDefinition),
  *         "id": "a89524a9-e8f7-455c-857b-0380ff308412",
  *         "name": "Temperature in JSON over MQTT",
  *         "dataInterfaceReferenceID": "6b8b37d0-3f74-4d80-9669-7aafb545f9f8",
- *         "dataKindReferenceIDs": {
- *           "dataKindReferenceID": [
- *             "445a4277-0623-4318-a494-8308bd998f3f"
- *           ]
- *         }
+ *         "dataKindReferenceID": "445a4277-0623-4318-a494-8308bd998f3f"
  *       }
  *     ]
  *   }

@@ -6,9 +6,7 @@ const createDataSourceDefinition = {
     name: validations.string().required(),
     description: validations.string().allow('').allow(null).optional(),
     dataInterfaceReferenceID: validations.id().required(),
-    dataKindReferenceIDs: validations.object().keys({
-      dataKindReferenceID: validations.array().items(validations.id()).required()
-    }).required()
+    dataKindReferenceID: validations.id().required()
   }
 };
 
@@ -45,9 +43,7 @@ const updateDataSourceDefinition = {
     name: validations.string().required(),
     description: validations.string().allow('').allow(null).optional(),
     dataInterfaceReferenceID: validations.id().required(),
-    dataKindReferenceIDs: validations.object().keys({
-      dataKindReferenceID: validations.array().items(validations.id()).required()
-    }).required()
+    dataKindReferenceID: validations.id().required()
   }
 };
 

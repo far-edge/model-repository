@@ -14,9 +14,7 @@ const discoverDataSourceDefinitions = (input) => {
       ...(input.dataInterfaceReferenceID ? {
         dataInterfaceReferenceID: input.dataInterfaceReferenceID
       } : { }),
-      ...(input.dataKindReferenceID ? {
-        'dataKindReferenceIDs.dataKindReferenceID': input.dataKindReferenceID
-      } : { })
+      ...(input.dataKindReferenceID ? { dataKindReferenceID: input.dataKindReferenceID } : { })
     });
   }).then((dataSourceDefinitions) => {
     logger.debug('Discovered data source definitions.');

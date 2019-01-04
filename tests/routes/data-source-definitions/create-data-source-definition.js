@@ -17,11 +17,7 @@ const testCreateDataSourceDefinition = () => {
           ...{
             name: faker.random.words(2),
             dataInterfaceReferenceID: dataInterface._id,
-            dataKindReferenceIDs: {
-              dataKindReferenceID: [
-                dataKind._id
-              ]
-            }
+            dataKindReferenceID: dataKind._id
           },
           ...(faker.random.boolean() ? { description: faker.random.words(10) } : { })
         };

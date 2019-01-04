@@ -35,18 +35,16 @@ const validateDataSourceDefinition = (dataSourceDefinition) => {
       return null;
     });
   }).then(() => {
-    // All data kidns must exist.
-    const ids = dataSourceDefinition.dataKindReferenceIDs.dataKindReferenceID;
-    return Promise.map(ids, (id) => {
-      return DataKind.count({
-        _id: id
-      }).then((exists) => {
-        if (!exists) {
-          logger.error(`Data kind ${ id } does not exist.`);
-          throw new errors.BadRequestError('DATA_KIND_NOT_FOUND');
-        }
-        return null;
-      });
+    // The data king must exist.
+    const id = dataSourceDefinition.dataKindReferenceID;
+    return DataKind.count({
+      _id: id
+    }).then((exists) => {
+      if (!exists) {
+        logger.error(`Data kind ${ id } does not exist.`);
+        throw new errors.BadRequestError('DATA_KIND_NOT_FOUND');
+      }
+      return null;
     });
   }).then(() => {
     return dataSourceDefinition;
