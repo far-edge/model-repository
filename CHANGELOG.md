@@ -4,6 +4,10 @@
 
 ##### [Unreleased]
 
+**CHANGED**
+
+* Align code with latest digital models.
+
 **SECURITY**
 
 * Fix security vulnerabilities reported by GitHub.
