@@ -2,7 +2,6 @@ const validations = require('../core/common/validations');
 
 const env = validations.object({
   API_BASE_URL: validations.string().uri().required(),
-  HOST: validations.string().hostname().required(),
   LOG_LEVEL: validations.string().allow([
     'debug',
     'error',
@@ -22,8 +21,7 @@ const env = validations.object({
     'production',
     'staging',
     'test'
-  ]).required(),
-  PORT: validations.number().required()
+  ]).required()
 }).unknown().required();
 
 module.exports = env;
