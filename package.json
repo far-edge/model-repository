@@ -3,7 +3,7 @@
   "description": "The FAR-EDGE model repository.",
   "author": "Athens Information Technology <info@ait.gr>",
   "version": "1.0.1",
-  "license": "Apache License v2.0",
+  "license": "Apache-2.0",
   "main": "server.js",
   "engines": {
     "node": ">=10.1.0",
